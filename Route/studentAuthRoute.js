@@ -1,22 +1,22 @@
 const { Router } = require('express')
 const bcrypt = require('bcrypt')
+const Student=require('../Modal/studentModal')
 const jwt = require('jsonwebtoken')
-const User = require('../Modal/userModal')
-const UserRoute = Router();
-UserRoute.post('/login', (req, res) => {
-    User.findOne({ email: req.body.email }, (err, user) => {
+const StudentAuthRoute = Router();
+StudentAuthRoute.post('/login', (req, res) => {
+    Student.findOne({ email: req.body.email }, (err, user) => {
         if (err) throw err
         if (!user)
             return res.status(404).json({ msg: 'user email/password is invalid' })
         if (!bcrypt.compareSync(req.body.password, user.password))
             return res.status(404).json({ msg: 'user email/password is invalid' })
-        const token = jwt.sign({ userId: user._id,isTeacher }, 'NULL')
+        const token = jwt.sign({ userId: user._id}, 'NULL')
         return res.status(200).json({ token: token })
     })
 })
-UserRoute.post('/register', (req, res) => {
+StudentAuthRoute.post('/register', (req, res) => {
     const HashPassword = bcrypt.hashSync(req.body.password, 10)
-    const newUser = new User({ name: req.body.name, password: HashPassword, email: req.body.email, institute: req.body.institute, isTeacher: req.body.isTeacher })
+    const newUser = new Student({ name: req.body.name, password: HashPassword, email: req.body.email, institute: req.body.institute })
     newUser.save(err => {
         if (err)
             return res.json({ msg: 'email already exist' })
@@ -24,4 +24,4 @@ UserRoute.post('/register', (req, res) => {
             return res.status(200).json('User is registed')
     })
 })
-module.exports = UserRoute
+module.exports = StudentAuthRoute
