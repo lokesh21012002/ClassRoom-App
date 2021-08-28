@@ -2,8 +2,8 @@ const { Router } = require('express')()
 const jwt = require('jsonwebtoken')
 const createClass = require('../Modal/createClassModal')
 const studentRoute = Router()
-studentRoute.get('/enrollclass', (req, res) => {
-    jwt.verify(token, "NULL", (err, decoded) => {
+studentRoute.post('/enrollclass', (req, res) => {
+    jwt.verify(req.body.token, "NULL", (err, decoded) => {
         if (err) throw err
         const code = createClass.findOne({ code: req.body.code })
         if (code)
@@ -18,4 +18,13 @@ studentRoute.get('/enrollclass', (req, res) => {
             res.status(401).json({error:"incorrect code"})
         }
     })   
+})
+studentRoute.get('/enrollclass', (req, res) => {
+    jwt.verify(req.body.token, "NULL", (err, decoded) => {
+        if (err) throw err
+        createClass.findOne({ enrolledBy: decoded.userId }, (err, docs) => {
+            if (err) throw err
+            res.json({class:docs})
+        })
+    })
 })
