@@ -1,15 +1,12 @@
 import './App.css';
 import Nav from "./components/Nav";
-
-
-
+import HomeScreen from './Screen/HomeScreen';
 function App() {
   
   return (
     <div>
-      <Nav/>
-        
-  
+      <Nav />
+      <HomeScreen/>
     </div>
   );
 }
