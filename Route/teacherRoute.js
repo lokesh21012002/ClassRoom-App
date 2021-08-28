@@ -8,7 +8,7 @@ teacherRouter.post('/create/classroom', (req, res) => {
         if (err) throw err
         if (decoded.isTeacher)
         {
-            const newClass = new createClass({ subjectName, subjectCode, time, code })
+            const newClass = new createClass({ subjectName, subjectCode, time, code ,teacher:decoded.userId})
             newClass.save(err => {
                 if (err) throw err
                 res.json({msg:"Successfully Created Class Room"})
