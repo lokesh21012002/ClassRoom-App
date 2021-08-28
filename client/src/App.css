@@ -1,38 +1,43 @@
-.App {
-  text-align: center;
+*{
+  padding: 0 0 0 0;
+  margin: 0;
+  box-sizing: border-box;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body{
+font-family:"poppins";
+/* background-color: ; */
+background-color: aliceblue;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+nav{
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  justify-content: space-between;
+  background-color: #221f1f;
   color: white;
+  padding: 1rem 2rem;
 }
+.card{
+  width: 18rem;
+  margin-top: 5%;
+  /* margin-right: 5%; */
+  margin-left: 5%;
+  border-radius: 0.5rem;
+  border: 2px solid whitesmoke;
+  /* padding-top: 2rem; */
 
-.App-link {
-  color: #61dafb;
 }
+.main{
+  display: flex;
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+}
+.t{
+  background-color: aqua;
+  color: white;
+  border-style: none;
+  text-align: center;
+  border-radius: 2px;
+  height: 2rem;
+  width: 4rem;
+  font-weight: bold;
+
 }
