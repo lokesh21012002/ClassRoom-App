@@ -5,6 +5,7 @@ const createClassModal = new Schema({
     subjectCode: { type: String, required: true },
     time: { type: Date, required: true },
     code: { type: String, required: true },
-    teacher:{type:Schema.Types.ObjectId,ref:'user'}
+    enrolledBy:{type:Schema.Types.ObjectId,ref:'student'},
+    teacher:{type:Schema.Types.ObjectId,ref:'teacher'}
 })
 module.exports=createClass=mongoose.model('createclass',createClassModal)
