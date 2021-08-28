@@ -43,18 +43,26 @@ teacherRouter.post('/create/test', (req, res) => {
             if (err) throw err
             if (!user)
                 res.status(401).json({ error: "Access Denied" })
-            const newTest = new Test({
-                name: req.body.name, subjectName: req.body.subjectName,
-                subjectCode: req.body.subjectCode, link: req.body.link,
-                date:req.body.date,creator:decoded.userId
-            })
-            newTest.save(err => {
-                if (err) throw err
-                res.json({msg:"Test is created successfully"})
-            })
+            else {
+                const newTest = new Test({
+                    name: req.body.name, subjectName: req.body.subjectName,
+                    subjectCode: req.body.subjectCode, link: req.body.link,
+                    date:req.body.date,creator:decoded.userId
+                })
+                newTest.save(err => {
+                    if (err) throw err
+                    res.json({msg:"Test is created successfully"})
+                })    
+            }
         })
     })
 })
 teacherRouter.post('/addmarks', (req, res) => {
-    
+    jwt.verify(req.body.token, "NULL", (err, decoded) => {
+        if (err) throw err
+        Test.findOneAndUpdate({ creator: decoded.userId }, { marks: req.body.marks }, (err, docs) => {
+            if (err) throw err
+            res.json({msg:"Marks added"})
+        })
+    })
 })
