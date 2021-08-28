@@ -16,3 +16,28 @@ nav{
   color: white;
   padding: 1rem 2rem;
 }
+.card{
+  width: 18rem;
+  margin-top: 5%;
+  /* margin-right: 5%; */
+  margin-left: 5%;
+  border-radius: 0.5rem;
+  border: 2px solid whitesmoke;
+  /* padding-top: 2rem; */
+
+}
+.main{
+  display: flex;
+
+}
+.t{
+  background-color: aqua;
+  color: white;
+  border-style: none;
+  text-align: center;
+  border-radius: 2px;
+  height: 2rem;
+  width: 4rem;
+  font-weight: bold;
+
+}
