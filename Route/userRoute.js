@@ -10,7 +10,7 @@ UserRoute.post('/login', (req, res) => {
             return res.status(404).json({ msg: 'user email/password is invalid' })
         if (!bcrypt.compareSync(req.body.password, user.password))
             return res.status(404).json({ msg: 'user email/password is invalid' })
-        const token = jwt.sign({ userId: user._id }, 'NULL')
+        const token = jwt.sign({ userId: user._id,isTeacher }, 'NULL')
         return res.status(200).json({ token: token })
     })
 })
