@@ -6,10 +6,10 @@ export default function Nav() {
     
       <nav>
         <div>
-          <h2>CLASSROOM</h2>
+          <h2><Link to="/">CLASSROOM</Link></h2>
         </div>
       <div>
-        <Link to="/student/login">Login</Link>
+        <Link to="/login">Login</Link>
           {/* <div className="btn-group">
             <button
               type="button"

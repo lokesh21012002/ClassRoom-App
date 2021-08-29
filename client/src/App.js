@@ -6,6 +6,7 @@ import StudentLogin from "./Screen/StudentLogin";
 import TeacherLogin from "./Screen/TeacherLogin";
 import StudentRegister from "./Screen/StudentRegister";
 import TeacherRegister from "./Screen/TeacherRegister";
+import LoginScreen from "./Screen/LoginScreen";
 
 
 // import Login from "./components/Login";
@@ -29,7 +30,8 @@ function App() {
         <Route component={StudentLogin} path="/student/login" />
         <Route component={TeacherLogin} path="/teacher/login" />
         <Route component={StudentRegister} path="/student/register" />
-        <Route component={TeacherRegister} path="/teacher/register"/>
+        <Route component={TeacherRegister} path="/teacher/register" />
+        <Route component={LoginScreen} path="/login"/>
         {/* register */}
           
       </BrowserRouter>
