@@ -16,10 +16,10 @@ export default function Login(props) {
             <label for="">Password</label>
           </div>
           <div className="container">
-            <input type="submit" name="" value="Login" style={{}}></input>
-<Link to="student/register">
-                          <input type="submit" name="" value="Register" style={{}}></input>
-                          </Link>
+            <input type="submit" name="" value="Login"></input>
+            <Link to={props.link}>
+              <input type="submit" name="" value="Register" style={{}}></input>
+            </Link>
           </div>
         </form>
       </div>
