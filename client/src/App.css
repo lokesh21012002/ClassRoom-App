@@ -40,7 +40,7 @@ body {
   padding: 0;
   font-family: sans-serif;
   /* 	background: url(bg.jpg); */
-  background-image: linear-gradient(to right top, #1db9ff, #a2a0ff, #fb7ad4, #ff677a, #f48603);
+  background-image: aliceblue;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -111,8 +111,8 @@ body {
 .box .inputBox input:valid~label {
   top: -19px;
   left: 0;
-  color: #03A9F4;
-  font-size: 12px;
+  color: white;
+  font-size: 15px;
 }
 
 .box input[type='submit'] {
@@ -120,7 +120,7 @@ body {
   border: none;
   outline: none;
   color: #FFF;
-  background: #03A9F4;
+  background: #0f4aeb;
   padding: 10px 20px;
   cursor: pointer;
   border-radius: 5px;
@@ -128,7 +128,7 @@ body {
 }
 
 .box input[type='submit']:hover {
-  background-color: rgba(3, 169, 244, 0.7);
+  background-color: #0f4aeb;
 }
 
 @media(max-width: 720px) {
