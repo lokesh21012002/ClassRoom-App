@@ -3,7 +3,7 @@ import Register from '../components/Register'
 
 export default function StudentRegister() {
     return (
-        <Register heading="Student"/>
+        <Register heading="Student" endpoint="/api/student/register"/>
         
     )
 }
