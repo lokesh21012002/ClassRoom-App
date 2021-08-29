@@ -3,7 +3,8 @@ const jwt=require('jsonwebtoken')
 const teacherRouter = Router()
 const Test = require('../Modal/testModal')
 const Teacher=require('../Modal/teacherModal')
-const createClass=require('../Modal/createClassModal')
+const createClass = require('../Modal/createClassModal')
+const Assigment=require('../Modal/assigmentModal')
 teacherRouter.post('/create/classroom', (req, res) => {
     const { token, subjectName, subjectCode, time,code } = req.body
     jwt.verify(token, "NULL", (err,decoded) => {
@@ -63,6 +64,28 @@ teacherRouter.post('/addmarks', (req, res) => {
         Test.findOneAndUpdate({ creator: decoded.userId }, { marks: req.body.marks }, (err, docs) => {
             if (err) throw err
             res.json({msg:"Marks added"})
+        })
+    })
+})
+teacherRouter.post('/create/assigment', (req, res) => {
+    jwt.verify(req.body.token, "NULL", (err, decoded) => {
+        if (err) throw err
+        const newAssigment = new Assigment({
+            name: req.body.name, subjectName: req.body.subjectName,
+            subjectCode:req.body.subjectCode,creator:decoded.userId
+        })
+        newAssigment.save(err => {
+            if (err) throw err
+            res.json({msg:"Assigment Created Successfully"})
+        })
+    })
+})
+teacherRouter.post('/addassigment', (req, res) => {
+    jwt.verify(req.body.token, "NULL", (err, decoded) => {
+        if (err) throw err
+        Assigment.findOneAndUpdate({ creator: decoded.userId }, { done: req.body.done }, (err, docs) => {
+            if (err) throw err
+            res.json({msg:"Assigment Compeleted"})
         })
     })
 })
