@@ -48,7 +48,7 @@ body {
   transform: translate(-50%, -50%);
   width: 400px;
   padding: 40px;
-  background: rgba(0, 0, 0, .4);
+  background: #221f1f;
   box-sizing: border-box;
   box-shadow: 0 15px 25px rgba(0, 0, 0, .5);
   border-radius: 10px;
@@ -115,7 +115,7 @@ body {
   border: none;
   outline: none;
   color: #FFF;
-  background: #0f4aeb;
+  background: teal;
   padding: 10px 20px;
   cursor: pointer;
   border-radius: 5px;
