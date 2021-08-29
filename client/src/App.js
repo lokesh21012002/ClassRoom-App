@@ -7,9 +7,7 @@ import TeacherLogin from "./Screen/TeacherLogin";
 import StudentRegister from "./Screen/StudentRegister";
 import TeacherRegister from "./Screen/TeacherRegister";
 import LoginScreen from "./Screen/LoginScreen";
-import TeacherDashboardClass from './Screen/TeacherDashboardClass';
-import TeacherDashboardTest from './Screen/TeacherDashboardTest';
-import TeacherDashboardAssigment from './TeacherDashboardAssigment';
+
 function App() {
   return (
     <div>
@@ -21,9 +19,7 @@ function App() {
         <Route component={TeacherLogin} path="/teacher/login" />
         <Route component={StudentRegister} path="/student/register" />
         <Route component={TeacherRegister} path="/teacher/register" />
-        <Route component={TeacherDashboardTest} path="/dashboard/test" />
-        <Route component={TeacherDashboardAssigment} path="/dashboard/assigment"/>
-        <Route component={TeacherDashboardClass} path="/dashboard/class"/>
+
       </BrowserRouter>
     </div>
   );

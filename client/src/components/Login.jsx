@@ -1,25 +1,30 @@
-import React from 'react'
+import React from "react";
+import { Link } from "react-router-dom";
 
 export default function Login(props) {
-    return (
-        <div>
-            <div className="box">
-                <h2>Login { props.heading}</h2>
-                <form>
-                    <div className="inputBox">
-                        <input type="text" name="" required=""></input>
-                        <label for="">Email</label>
-                    </div>
-                     <div className="inputBox">
-                        <input type="password" name="" required=""></input>
-                        <label for="">Password</label>
-                    </div>
-                    <input type="submit" name="" value="Login"></input>
+  return (
+    <div>
+      <div className="box">
+        <h2>Login {props.heading}</h2>
+        <form>
+          <div className="inputBox">
+            <input type="text" name="" required=""></input>
+            <label for="">Email</label>
+          </div>
+          <div className="inputBox">
+            <input type="password" name="" required=""></input>
+            <label for="">Password</label>
+          </div>
+          <div className="container">
+            <input type="submit" name="" value="Login" style={{}}></input>
+<Link to="student/register">
+                          <input type="submit" name="" value="Register" style={{}}></input>
+                          </Link>
+          </div>
+        </form>
+      </div>
 
-                </form>
-            </div>
-           
-                         {/* <h2>Login</h2>
+      {/* <h2>Login</h2>
                             <form action="">
                                 <div class="inputBox">
                                     <input type="text" name="" required="">
@@ -32,7 +37,6 @@ export default function Login(props) {
                                 <input type="submit" name="" value="Submit">
                             </form>
               */}
-      </div>
-       
-    )
+    </div>
+  );
 }
