@@ -1,7 +1,10 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
-export default function HomeScreen() {
+export default function TeacherDashboard() {
     return (
+        <>
+            <center><h2>Classes</h2></center>
         <div className="container">
             <div className="card shadow">
                 <div className="card-head">
@@ -13,7 +16,7 @@ export default function HomeScreen() {
                     <button className="btn btn-info">Join Now</button>
                 </div>
             </div>
-        </div>
-
+            </div>
+        </>
     )
 }

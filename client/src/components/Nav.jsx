@@ -6,10 +6,10 @@ export default function Nav() {
     
       <nav>
         <div>
-          <h2><Link to="/">CLASSROOM</Link></h2>
+        <Link to="/" style={{"textDecoration":"none","color":"white"}}><h2>CLASSROOM</h2></Link>
         </div>
       <div>
-        <Link to="/login">Login</Link>
+        <Link to="/login" style={{"textDecoration":"none","color":"white"}}>Login</Link>
           {/* <div className="btn-group">
             <button
               type="button"
