@@ -1,13 +1,16 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 export default function Nav() {
   return (
+    
       <nav>
         <div>
           <h2>CLASSROOM</h2>
         </div>
-        <div>
-          <div className="btn-group">
+      <div>
+        <Link to="/student/login">Login</Link>
+          {/* <div className="btn-group">
             <button
               type="button"
               className="btn btn-info dropdown-toggle"
@@ -52,7 +55,7 @@ export default function Nav() {
                 </a>
               </li>
             </ul>
-          </div>
+          </div> */}
         </div>
       </nav>
   );
