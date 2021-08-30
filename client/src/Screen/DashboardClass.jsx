@@ -1,6 +1,23 @@
 import React from 'react'
 
 export default function DashboardClass() {
+    const [classes, setclasses] = useState([])
+    const data=JSON.parse(localStorage.getItem('token'))
+    useEffect(() => {
+        if (data.isTeacher)
+        {
+            axios.get('/api/teacher/classes', { headers: { token: data.token } })
+                .then(res => {
+                console.log(res.data)
+            }).catch(err=>{console.log(err)})
+        }
+        else {
+            axios.get('/api/student/assigment', { headers: { token: data.token } })
+                .then(res => {
+                console.log(res.data)
+            }).catch(err=>{console.log(err)})
+        }
+    }, [])
     return (
         <>
             <center><h2>Classes</h2></center>

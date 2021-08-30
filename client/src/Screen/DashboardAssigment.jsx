@@ -1,9 +1,22 @@
 import React, { useState } from 'react'
-
+import axios from 'axios'
 export default function DashboardAssigment() {
     const [assigment, setassigment] = useState([])
+    const data=JSON.parse(localStorage.getItem('token'))
     useEffect(() => {
-        
+        if (data.isTeacher)
+        {
+            axios.get('/api/teacher/assigment', { headers: { token: data.token } })
+                .then(res => {
+                console.log(res.data)
+            }).catch(err=>{console.log(err)})
+        }
+        else {
+            axios.get('/api/student/assigment', { headers: { token: data.token } })
+                .then(res => {
+                console.log(res.data)
+            }).catch(err=>{console.log(err)})
+        }
     }, [])
     return (
         <>
