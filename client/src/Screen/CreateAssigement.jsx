@@ -1,38 +1,33 @@
-import React from 'react'
-
+import React, { useState } from 'react'
+import axios from 'axios'
 export default function CreateAssigement() {
+    const [name, setname] = useState('')
+    const [subjectName, setsubjectName] = useState('')
+    const data=JSON.parse(localStorage.getItem('token'))
+    const HandleSubmit = (e) => {
+        e.preventDefault()
+        axios.post('/api/teacher/create/assigment', { subjectName,name, token: data.token })
+            .then(res => {
+                console.log(res.data)
+            }).catch(err => {
+                console.log(err)
+            })
+    }
     return (
-        <div>
+        <>
             <div className="box">
-                {/* <h2>Register { props.heading}</h2> */}
                 <form>
                     <div className="inputBox">
-                        <input type="text" name="" required=""></input>
+                        <input type="text" name="" required="" value={name} onChange={ e=>setname(e.target.value)}/>
                         <label for="">Name</label>
                     </div>
                      <div className="inputBox">
-                        <input type="text" name="" required=""></input>
+                        <input type="text" name="" required="" value={subjectName} onChange={ e=>setsubjectName(e.target.value)}/>
                         <label for="">Subject Name</label>
                     </div>
-                     <div className="inputBox">
-                        <input type="text" name="" required=""></input>
-                        <label for="">Subject Code</label>
-                    </div>
-                      {/* <div className="inputBox">
-                        <input type="text" name="" required=""></input>
-                        <label for="">Code</label>
-                    </div> */}
-
-                     {/* <div className="inputBox">
-                        <input type="password" name="" required=""></input>
-                        <label for="">Password</label>
-                    </div> */}
-                    <input type="submit" name="" value="Create"></input>
-
+                    <input type="submit" value="Create" onClick={ HandleSubmit}/>
                 </form>
             </div>
-
-            
-        </div>
+        </>
     )
 }

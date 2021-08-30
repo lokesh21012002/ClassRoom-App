@@ -11,7 +11,7 @@ StudentAuthRoute.post('/login', (req, res) => {
         if (!bcrypt.compareSync(req.body.password, user.password))
             return res.json('user email/password is invalid')
         const token = jwt.sign({ userId: user._id}, 'NULL')
-        return res.json({ token: token })
+        return res.json({ token: token,isTeacher:false })
     })
 })
 StudentAuthRoute.post('/register', (req, res) => {

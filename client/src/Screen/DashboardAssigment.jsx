@@ -1,6 +1,10 @@
-import React from 'react'
+import React, { useState } from 'react'
 
-export default function TeacherDashboardAssigment() {
+export default function DashboardAssigment() {
+    const [assigment, setassigment] = useState([])
+    useEffect(() => {
+        
+    }, [])
     return (
         <>
         <center><h2>Assigment's</h2></center>

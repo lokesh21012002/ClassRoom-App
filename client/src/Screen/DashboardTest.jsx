@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function TeacherDashboardTest() {
+export default function DashboardTest() {
     return (
         <>
             <center><h2>Test's</h2></center>

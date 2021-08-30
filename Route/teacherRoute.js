@@ -23,7 +23,7 @@ teacherRoute.post('/create/classroom', (req, res) => {
     })
 })
 teacherRoute.get('/classes', (req, res) => {
-    jwt.verify(token, "NULL", (err, decoded) => {
+    jwt.verify(req.headers.token, "NULL", (err, decoded) => {
         if (err) throw err
         if (decoded.isTeacher)
         {

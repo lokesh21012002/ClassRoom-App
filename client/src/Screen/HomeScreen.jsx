@@ -1,6 +1,32 @@
-import React from 'react'
+import axios from 'axios'
+import React, { useState ,useEffect} from 'react'
 
 export default function HomeScreen() {
+    const [classes, setclasses] = useState([])
+    const data=JSON.parse(localStorage.getItem('token'))
+    const isTeacher = data.isTeacher
+    const token=data.token
+    useEffect(() => {
+        if (isTeacher===true)
+        {
+            axios.get('/api/teacher/classes', { token })
+                .then(res => {
+                    setclasses(res.data.calss)
+                })
+                .catch(err => {
+                console.log(err)
+            })
+        }
+        else {
+            axios.get('/api/student/enrollclass', { headers:{token:token}})
+                .then(res => {
+                    console.log(res.data)
+                })
+                .catch(err => {
+                console.log(err)
+            })
+        }
+    }, [])
     return (
         <div className="container">
             <div className="card shadow">

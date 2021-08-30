@@ -12,7 +12,9 @@ export default function Login(props) {
     axios.post(props.endpoint, { email, password })
       .then(res => {
         const token = res.data
-        localStorage.setItem('token', token)
+        const isTeacher = res.data.isTeacher
+        localStorage.setItem('isTeacher',JSON.stringify(isTeacher))
+        localStorage.setItem('token', JSON.stringify(token))
         window.location.href='/'
       })
       .catch(err=>{setresponse(err)})

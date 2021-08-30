@@ -22,7 +22,7 @@ studentRoute.post('/enrollclass', (req, res) => {
     })   
 })
 studentRoute.get('/enrollclass', (req, res) => {
-    jwt.verify(req.body.token, "NULL", (err, decoded) => {
+       jwt.verify(req.headers.token, "NULL", (err, decoded) => {
         if (err) throw err
         createClass.findOne({ enrolledBy: decoded.userId }, (err, docs) => {
             if (err) throw err
@@ -31,7 +31,7 @@ studentRoute.get('/enrollclass', (req, res) => {
     })
 })
 studentRoute.get('/assigment', (req, res) => {
-    jwt.verify(req.body.token, "NULL", (err, decoded) => {
+    jwt.verify(req.headers.token, "NULL", (err, decoded) => {
         if (err) throw err
         createClass.findOne({ enrolledBy: decoded.userId }, (err, docs) => {
             if (err) throw err
@@ -43,7 +43,7 @@ studentRoute.get('/assigment', (req, res) => {
     })
 })
 studentRoute.get('/test', (req, res) => {
-    jwt.verify(req.body.token, "NULL", (err, decoded) => {
+    jwt.verify(req.headers.token, "NULL", (err, decoded) => {
         if (err) throw err
         createClass.findOne({ enrolledBy: decoded.userId }, (err, docs) => {
             if (err) throw err
