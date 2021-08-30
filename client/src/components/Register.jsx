@@ -1,22 +1,10 @@
-import React, { useState } from 'react';
-
-import axios from 'axios';
-
-
-
+import React, { useState } from 'react'
+import axios from 'axios'
 export default function Register(props) {
-
     const [name, setname] = useState("");
     const [password, setpassword] = useState("");
     const [email, setemail] = useState("");
     const [institute, setinstitute] = useState("");
-
-
-
-
-
-
-
     const handelsubmit = () => {
         axios.post(props.endpoint, { name, password, email, institute })
             .then(res => {
@@ -24,10 +12,7 @@ export default function Register(props) {
         
             }).catch(err => {
                 console.log(err);
-            });
-
-
-        
+            }) 
     }
     return (
         <div>
@@ -54,6 +39,5 @@ export default function Register(props) {
                 </form>
             </div>
       </div>
-       
     )
 }
