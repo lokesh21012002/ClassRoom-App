@@ -2,15 +2,20 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 export default function Nav() {
+  const token = localStorage.getItem('token')
+  const HandleLogout = () => {
+    localStorage.removeItem('token')
+    window.location.href='/'
+  }
   return (
-
     <nav>
       <div>
         <Link to="/" style={{ "textDecoration": "none", "color": "white" }}><h2>CLASSROOM</h2></Link>
       </div>
       <div>
-        <Link to="/login" style={{ "textDecoration": "none", "color": "white" }}>Login</Link>
-        <div className="btn-group">
+        {
+          token ? (
+            <div className="btn-group">
           <button
             type="button"
             className="btn btn-info dropdown-toggle"
@@ -50,11 +55,13 @@ export default function Nav() {
             </li>
             <li>
               <a className="dropdown-item" href="#">
-                <h6 className="btn btn-danger">Logout</h6>
+                <h6 className="btn btn-danger" onClick={HandleLogout}>Logout</h6>
               </a>
             </li>
           </ul>
         </div>
+          ):( <Link to="/login" style={{ "textDecoration": "none", "color": "white" }}>Login</Link>)
+        }
       </div>
     </nav>
   );

@@ -12,5 +12,5 @@ mongoose.connect(`mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cl
 app.use('/api/student/',StudentAuthRoute)
 app.use('/api/teacher/', TeacherAuthRoute)
 app.use('/api/teacher/', teacherRoute)
-app.use('/api/stduent/',studentRoute)
+app.use('/api/student/',studentRoute)
 app.listen(5000, () => { console.log('Server Started...') })

@@ -1,21 +1,25 @@
 import React, { useState } from 'react'
 import axios from 'axios'
+import Alert from './Alert'
 export default function Register(props) {
     const [name, setname] = useState("");
     const [password, setpassword] = useState("");
     const [email, setemail] = useState("");
     const [institute, setinstitute] = useState("");
-    const handelsubmit = () => {
+    const [response, setresponse] = useState('')
+    const handelsubmit = (e) => {
+        e.preventDefault()
         axios.post(props.endpoint, { name, password, email, institute })
             .then(res => {
-                console.log(res.data);
+                setresponse(res.data)
         
             }).catch(err => {
-                console.log(err);
+                setresponse(err)
             }) 
     }
     return (
         <div>
+            {response && <Alert msg={ response}/>}
             <div className="box">
                 <h2>Register { props.heading}</h2>
                 <form>
