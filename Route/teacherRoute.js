@@ -1,17 +1,17 @@
-const { Router } = require('express')()
+const { Router } = require('express')
 const jwt=require('jsonwebtoken')
-const teacherRouter = Router()
+const teacherRoute = Router()
 const Test = require('../Modal/testModal')
 const Teacher=require('../Modal/teacherModal')
 const createClass = require('../Modal/createClassModal')
 const Assigment=require('../Modal/assigmentModal')
-teacherRouter.post('/create/classroom', (req, res) => {
-    const { token, subjectName, subjectCode, time,code } = req.body
+teacherRoute.post('/create/classroom', (req, res) => {
+    const { token, subjectName, time,code } = req.body
     jwt.verify(token, "NULL", (err,decoded) => {
         if (err) throw err
         if (decoded.isTeacher)
         {
-            const newClass = new createClass({ subjectName, subjectCode, time, code ,teacher:decoded.userId})
+            const newClass = new createClass({ subjectName, time, code ,teacher:decoded.userId})
             newClass.save(err => {
                 if (err) throw err
                 res.json({msg:"Successfully Created Class Room"})
@@ -22,7 +22,7 @@ teacherRouter.post('/create/classroom', (req, res) => {
         }
     })
 })
-teacherRouter.get('/classes', (req, res) => {
+teacherRoute.get('/classes', (req, res) => {
     jwt.verify(token, "NULL", (err, decoded) => {
         if (err) throw err
         if (decoded.isTeacher)
@@ -37,7 +37,7 @@ teacherRouter.get('/classes', (req, res) => {
         }
     })
 })
-teacherRouter.post('/create/test', (req, res) => {
+teacherRoute.post('/create/test', (req, res) => {
     jwt.verify(req.body.token, "NULL", (err, decoded) => {
       if(err) throw err
         Teacher.findById({ _id: decoded.userId }, (err, user) => {
@@ -47,7 +47,7 @@ teacherRouter.post('/create/test', (req, res) => {
             else {
                 const newTest = new Test({
                     name: req.body.name, subjectName: req.body.subjectName,
-                    subjectCode: req.body.subjectCode, link: req.body.link,
+                    link: req.body.link,
                     date:req.body.date,creator:decoded.userId
                 })
                 newTest.save(err => {
@@ -58,7 +58,7 @@ teacherRouter.post('/create/test', (req, res) => {
         })
     })
 })
-teacherRouter.post('/addmarks', (req, res) => {
+teacherRoute.post('/addmarks', (req, res) => {
     jwt.verify(req.body.token, "NULL", (err, decoded) => {
         if (err) throw err
         Test.findOneAndUpdate({ creator: decoded.userId }, { marks: req.body.marks }, (err, docs) => {
@@ -67,12 +67,12 @@ teacherRouter.post('/addmarks', (req, res) => {
         })
     })
 })
-teacherRouter.post('/create/assigment', (req, res) => {
+teacherRoute.post('/create/assigment', (req, res) => {
     jwt.verify(req.body.token, "NULL", (err, decoded) => {
         if (err) throw err
         const newAssigment = new Assigment({
             name: req.body.name, subjectName: req.body.subjectName,
-            subjectCode:req.body.subjectCode,creator:decoded.userId
+            creator:decoded.userId
         })
         newAssigment.save(err => {
             if (err) throw err
@@ -80,7 +80,7 @@ teacherRouter.post('/create/assigment', (req, res) => {
         })
     })
 })
-teacherRouter.post('/addassigment', (req, res) => {
+teacherRoute.post('/addassigment', (req, res) => {
     jwt.verify(req.body.token, "NULL", (err, decoded) => {
         if (err) throw err
         Assigment.findOneAndUpdate({ creator: decoded.userId }, { done: req.body.done }, (err, docs) => {
@@ -89,3 +89,4 @@ teacherRouter.post('/addassigment', (req, res) => {
         })
     })
 })
+module.exports=teacherRoute

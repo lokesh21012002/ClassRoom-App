@@ -11,7 +11,7 @@ export default function TeacherDashboardTest() {
                         <h4>Subject Name</h4>
                     </div>
                     <div className="test-card-bottom">
-                        <h5 style={{"color":"gray"}}>BT-IT102</h5>
+                        <h5 style={{"color":"gray"}}>Institute</h5>
                     </div>
                 </div>
             </div>

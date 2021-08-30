@@ -1,4 +1,4 @@
-const { Router } = require('express')()
+const { Router } = require('express')
 const jwt = require('jsonwebtoken')
 const createClass = require('../Modal/createClassModal')
 const Test = require('../Modal/testModal')
@@ -54,3 +54,4 @@ studentRoute.get('/test', (req, res) => {
         })
     })
 })
+module.exports=studentRoute

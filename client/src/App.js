@@ -10,6 +10,9 @@ import LoginScreen from "./Screen/LoginScreen";
 import CreateTest from './Screen/CreateTest'
 import CreateClass from './Screen/CreateClass'
 import CreateAssigment from './Screen/CreateAssigement'
+import TeacherDasboardAssigment from './Screen/TeacherDashboardAssigment'
+import TeacherDasboardClass from './Screen/TeacherDashboardClass'
+import TeacherDasboardTest from './Screen/TeacherDashboardTest'
 function App() {
   return (
     <div>
@@ -23,7 +26,10 @@ function App() {
         <Route component={TeacherRegister} path="/teacher/register" />
         <Route component={CreateTest} path="/create/test" />
         <Route component={CreateAssigment} path="/create/assigment"/>
-        <Route component={CreateClass} path="/create/class"/>
+        <Route component={CreateClass} path="/create/class" />
+        <Route exact component={TeacherDasboardClass} path="/teacher/dashboard" />
+        <Route component={TeacherDasboardAssigment} path="/teacher/dashboard/assigment" />
+        <Route component={TeacherDasboardTest} path='/teacher/dashboard/test'/>
       </BrowserRouter>
     </div>
   );

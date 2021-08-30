@@ -3,7 +3,6 @@ const Schema = mongoose.Schema
 const testModal = new Schema({
     name: { type: String, required: true },
     subjectName: { type: String, required: true },
-    subjectCode: { type: String, required: true },
     link: { type: String },
     date: { type: Date, required: true },
     marks: { type: Number, minlength: 1 },
