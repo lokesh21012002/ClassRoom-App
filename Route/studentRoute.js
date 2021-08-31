@@ -7,7 +7,7 @@ const studentRoute = Router()
 studentRoute.post('/enrollclass', (req, res) => {
     jwt.verify(req.body.token, "NULL", (err, decoded) => {
         if (err) throw err
-        const code = createClass.findOne({ code: req.body.code })
+        const code = createClass.find({ subjectName:req.body.subjectName,code: req.body.code })
         if (code)
         {
             const newErolledBy = new createClass({ enrolledBy: decoded.userId })
@@ -24,7 +24,7 @@ studentRoute.post('/enrollclass', (req, res) => {
 studentRoute.get('/enrollclass', (req, res) => {
        jwt.verify(req.headers.token, "NULL", (err, decoded) => {
         if (err) throw err
-        createClass.findOne({ enrolledBy: decoded.userId }, (err, docs) => {
+        createClass.find({ enrolledBy: decoded.userId }, (err, docs) => {
             if (err) throw err
             res.json({class:docs})
         })
@@ -33,9 +33,9 @@ studentRoute.get('/enrollclass', (req, res) => {
 studentRoute.get('/assigment', (req, res) => {
     jwt.verify(req.headers.token, "NULL", (err, decoded) => {
         if (err) throw err
-        createClass.findOne({ enrolledBy: decoded.userId }, (err, docs) => {
+        createClass.find({ enrolledBy: decoded.userId }, (err, docs) => {
             if (err) throw err
-            Assigment.findOne({ class: docs._id }, (err, result) => {
+            Assigment.find({ class: docs._id }, (err, result) => {
                 if (err) throw err
                 res.json({assigment:result})
             })
@@ -45,9 +45,9 @@ studentRoute.get('/assigment', (req, res) => {
 studentRoute.get('/test', (req, res) => {
     jwt.verify(req.headers.token, "NULL", (err, decoded) => {
         if (err) throw err
-        createClass.findOne({ enrolledBy: decoded.userId }, (err, docs) => {
+        createClass.find({ enrolledBy: decoded.userId }, (err, docs) => {
             if (err) throw err
-            Test.findOne({ class: docs._id }, (err, result) => {
+        Test.find({ class: docs._id }, (err, result) => {
                 if (err) throw err
                 res.json({test:result})
             })

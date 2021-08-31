@@ -8,7 +8,7 @@ export default function CreateClass() {
     const data=JSON.parse(localStorage.getItem('token'))
     const HandleSubmit = (e) => {
         e.preventDefault()
-        axios.post('/api/teacher/create/class', { subjectName, code, time, token: data.token })
+        axios.post('/api/teacher/create/classroom', { subjectName, code, time, token: data.token })
             .then(res => {
                 console.log(res.data)
             }).catch(err => {

@@ -1,7 +1,7 @@
-import React, { useState } from 'react'
+import React, { useState,useEffect } from 'react'
 import axios from 'axios'
 export default function DashboardAssigment() {
-    const [assigment, setassigment] = useState([])
+    const [assigments, setassigments] = useState([])
     const data=JSON.parse(localStorage.getItem('token'))
     useEffect(() => {
         if (data.isTeacher)

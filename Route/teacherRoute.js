@@ -6,35 +6,24 @@ const Teacher=require('../Modal/teacherModal')
 const createClass = require('../Modal/createClassModal')
 const Assigment=require('../Modal/assigmentModal')
 teacherRoute.post('/create/classroom', (req, res) => {
+    console.log(req.body)
     const { token, subjectName, time,code } = req.body
     jwt.verify(token, "NULL", (err,decoded) => {
         if (err) throw err
-        if (decoded.isTeacher)
-        {
             const newClass = new createClass({ subjectName, time, code ,teacher:decoded.userId})
             newClass.save(err => {
                 if (err) throw err
                 res.json({msg:"Successfully Created Class Room"})
             })
-        }
-        else {
-            res.status(401).json({msg:"Invalid Token"})
-        }
     })
 })
 teacherRoute.get('/classes', (req, res) => {
     jwt.verify(req.headers.token, "NULL", (err, decoded) => {
         if (err) throw err
-        if (decoded.isTeacher)
-        {
-            createClass.findOne({ teacher: decoded.userId }, (err, docs) => {
+            createClass.find({ teacher: decoded.userId }, (err, docs) => {
                 if(err) throw err
-                res.json({classes:docs})
+                res.json({ classes: docs })
             })   
-        }
-        else {
-            res.status(401).json({msg:"Invalid Token"})
-        }
     })
 })
 teacherRoute.post('/create/test', (req, res) => {

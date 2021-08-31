@@ -39,24 +39,24 @@ export default function Nav() {
           </button>
           <ul className="dropdown-menu">
             <li>
-              <a className="dropdown-item" href="#">
+              <Link className="dropdown-item" to="/dashboard">
                 <h6>Dashboard</h6>
-              </a>
+              </Link>
             </li>
             <li>
-              <a className="dropdown-item" href="#">
+              <Link className="dropdown-item" to="/dashboard/assigment">
                 <h6>Assigment</h6>
-              </a>
+              </Link>
             </li>
             <li>
-              <a className="dropdown-item" href="#">
+              <Link className="dropdown-item" to="/dashboard/test">
                 <h6>Test</h6>
-              </a>
+              </Link>
             </li>
             <li>
-              <a className="dropdown-item" href="#">
+              <p className="dropdown-item" >
                 <h6 className="btn btn-danger" onClick={HandleLogout}>Logout</h6>
-              </a>
+              </p>
             </li>
           </ul>
         </div>

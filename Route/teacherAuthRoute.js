@@ -7,9 +7,9 @@ TeacherAuthRoute.post('/login', (req, res) => {
     Teacher.findOne({ email: req.body.email }, (err, user) => {
         if (err) throw err
         if (!user)
-            return res.status(401).json('user email/password is invalid' )
+            return res.json('user email/password is invalid' )
         if (!bcrypt.compareSync(req.body.password, user.password))
-            return res.status(401).json('user email/password is invalid')
+            return res.json('user email/password is invalid')
         const token = jwt.sign({ userId: user._id}, 'NULL')
         return res.json({ token: token ,isTeacher:true})
     })

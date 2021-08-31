@@ -11,8 +11,7 @@ export default function Register(props) {
         e.preventDefault()
         axios.post(props.endpoint, { name, password, email, institute })
             .then(res => {
-                setresponse(res.data)
-        
+                window.location.href=props.redirect
             }).catch(err => {
                 setresponse(err)
             }) 

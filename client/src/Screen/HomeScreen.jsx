@@ -1,44 +1,47 @@
 import axios from 'axios'
-import React, { useState ,useEffect} from 'react'
+import React, { useState, useEffect } from 'react'
 
 export default function HomeScreen() {
     const [classes, setclasses] = useState([])
-    const data=JSON.parse(localStorage.getItem('token'))
+    const data = JSON.parse(localStorage.getItem('token'))
     const isTeacher = data.isTeacher
-    const token=data.token
+    const token = data.token
     useEffect(() => {
-        if (isTeacher===true)
-        {
-            axios.get('/api/teacher/classes', { token })
+        if (isTeacher) {
+            axios.get('/api/teacher/classes', { headers: { token } })
                 .then(res => {
-                    setclasses(res.data.calss)
+                    setclasses(res.data.calsses)
                 })
                 .catch(err => {
-                console.log(err)
-            })
+                    console.log(err)
+                })
         }
         else {
-            axios.get('/api/student/enrollclass', { headers:{token:token}})
+            axios.get('/api/student/enrollclass', { headers: { token: token } })
                 .then(res => {
-                    console.log(res.data)
+                    setclasses(res.data.classes)
                 })
                 .catch(err => {
-                console.log(err)
-            })
+                    console.log(err)
+                })
         }
     }, [])
     return (
         <div className="container">
-            <div className="card shadow">
-                <div className="card-head">
-                    <h3>OOPM</h3>
-                    <h5 style={{"color":"gray"}}>11:30</h5>
-                </div>
-                <div className="card-bottom">
-                    <h6 style={{"color":"gray"}}>Institute Name</h6>
-                    <button className="btn btn-info">Join Now</button>
-                </div>
-            </div>
+            {
+                classes.map(Class => (
+                    <div className="card shadow">
+                        <div className="card-head">
+                            <h3>{Class.subjectName}</h3>
+                            <h5 style={{ "color": "gray" }}>{Class.time}</h5>
+                        </div>
+                        <div className="card-bottom">
+                            <h6 style={{ "color": "gray" }}>{Class.code}</h6>
+                            <button className="btn btn-info">Join Now</button>
+                        </div>
+                    </div>
+                ))
+            }
         </div>
     )
 }

@@ -14,6 +14,7 @@ import DasboardAssigment from './Screen/DashboardAssigment'
 import DasboardClass from './Screen/DashboardClass'
 import DasboardTest from './Screen/DashboardTest'
 import AuthScreen from './Screen/AuthScreen'
+import JoinClass from './Screen/JoinClass';
 function App() {
   return (
     <div>
@@ -30,7 +31,8 @@ function App() {
         <Route component={AuthScreen(CreateClass)} path="/create/class" />
         <Route exact component={AuthScreen(DasboardClass)} path="/dashboard" />
         <Route component={AuthScreen(DasboardAssigment)} path="/dashboard/assigment" />
-        <Route component={AuthScreen(DasboardTest)} path='/dashboard/test'/>
+        <Route component={AuthScreen(DasboardTest)} path='/dashboard/test' />
+        <Route component={AuthScreen(JoinClass)} path="/joinclass"/>
       </BrowserRouter>
     </div>
   );
