@@ -8,7 +8,6 @@ export default function CreateTest() {
     const [link, setlink] = useState('')
     const data=JSON.parse(localStorage.getItem('token'))
     const HandleSubmit = (e) => {
-        e.preventDefault()
         axios.post('/api/teacher/create/test', { subjectName,name, token: data.token })
             .then(res => {
                 console.log(res.data)

@@ -5,7 +5,6 @@ export default function CreateAssigement() {
     const [subjectName, setsubjectName] = useState('')
     const data=JSON.parse(localStorage.getItem('token'))
     const HandleSubmit = (e) => {
-        e.preventDefault()
         axios.post('/api/teacher/create/assigment', { subjectName,name, token: data.token })
             .then(res => {
                 console.log(res.data)

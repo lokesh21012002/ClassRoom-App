@@ -1,22 +1,23 @@
 import axios from 'axios'
 import React,{useState} from 'react'
-
+import Alert from '../components/Alert'
 export default function CreateClass() {
     const [subjectName, setsubjectName] = useState('')
     const [time, settime] = useState('')
     const [code, setcode] = useState('')
+    const [msg, setmsg] = useState('')
     const data=JSON.parse(localStorage.getItem('token'))
     const HandleSubmit = (e) => {
-        e.preventDefault()
         axios.post('/api/teacher/create/classroom', { subjectName, code, time, token: data.token })
             .then(res => {
-                console.log(res.data)
+                setmsg(res.data)
             }).catch(err => {
-                console.log(err)
+                setmsg(err)
             })
     }
     return (
         <>
+            {msg && <Alert msg={msg}/>}
             <div className="box">
                 <form>
                     <div className="inputBox">
