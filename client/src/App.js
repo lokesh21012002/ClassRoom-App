@@ -1,7 +1,6 @@
 import { BrowserRouter, Route } from 'react-router-dom';
 import './App.css';
 import Nav from "./components/Nav";
-import HomeScreen from './Screen/HomeScreen';
 import StudentLogin from "./Screen/StudentLogin";
 import TeacherLogin from "./Screen/TeacherLogin";
 import StudentRegister from "./Screen/StudentRegister";
@@ -20,7 +19,6 @@ function App() {
     <div>
       <BrowserRouter>
         <Nav/>
-        <Route exact component={AuthScreen(HomeScreen)} path="/" />
         <Route component={LoginScreen} path="/login" />
         <Route component={StudentLogin} path="/student/login" />
         <Route component={TeacherLogin} path="/teacher/login" />
@@ -29,7 +27,7 @@ function App() {
         <Route component={AuthScreen(CreateTest)} path="/create/test" />
         <Route component={AuthScreen(CreateAssigment)} path="/create/assigment"/>
         <Route component={AuthScreen(CreateClass)} path="/create/class" />
-        <Route exact component={AuthScreen(DasboardClass)} path="/dashboard" />
+        <Route exact component={AuthScreen(DasboardClass)} path="/" />
         <Route component={AuthScreen(DasboardAssigment)} path="/dashboard/assigment" />
         <Route component={AuthScreen(DasboardTest)} path='/dashboard/test' />
         <Route component={AuthScreen(JoinClass)} path="/joinclass"/>

@@ -11,7 +11,10 @@ export default function DashboardClass() {
                 })
         }
         else {
-
+            axios.get('/api/student/enrollclass', { headers: { token: data.token } })
+                .then(res => {
+                    setclasses(res.data.class)
+                })
         }
     }, [])
     return (
@@ -31,7 +34,7 @@ export default function DashboardClass() {
                             </div>
                         </div>
                     ))
-                }
+                    }
             </div>
         </>
     )
